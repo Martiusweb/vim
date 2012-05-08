@@ -1,0 +1,5 @@
+autoload/pathogen.vim
+colors/desertEx.vim
+colors/anotherdark.vim
+.netrwhist
+spell/
