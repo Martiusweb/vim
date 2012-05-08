@@ -1,0 +1,61 @@
+*mts-cheat.txt*	Martius' cheat sheet
+
+Author:   Martin Richard
+
+==============================================================================
+Contents						*mts-cheat* *mts-contents*
+
+ 1. Custom mappings...... |mts-custom-mappings|
+	Function mappings |mts-function-mappings|
+	Edition.......... |mts-edition|
+	Miscellaneaous... |mts-misc|
+ 2. Plugins.............. |mts-plugins|
+
+==============================================================================
+1. Custom mappings					*mts-custom-mappings*
+
+------------------------------------------------------------------------------
+Function mappings					*mts-function-mappings*
+
+<F1> Help
+<F2> Display this cheat sheet
+<F3> Toggle paste mode
+<F6> Display tagslist
+
+------------------------------------------------------------------------------
+Edition							*mts-edition*
+
+- switch with previous line
+è switch with next line
+H go to the first non-blank character of the line
+L got to the end of the line
+
+<C-D> Deletes current line in insert mode
+<C-U> Uppercase current word
+
+<C-space> Autocomplete language keywords
+
+<leader>/  Disable search highlight
+<leader>pi Toggle list invisible characters
+
+<leader>en Toggle spell check and set English as current language
+<leader>fr Toggle spell check and set French as current language
+
+------------------------------------------------------------------------------
+Miscellaneaous						*mts-misc*
+
+Operator pending:
+
+	p between parentheses
+
+Command helpers:
+
+	w!! sudo-ise vim instance
+
+==============================================================================
+2. Plugins						*mts-plugins*
+
+You might read |surround|.
+
+==============================================================================
+ vim: tw=78 ts=8 sw=8 sts=8 noet ft=help

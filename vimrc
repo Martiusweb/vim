@@ -46,6 +46,14 @@ nnoremap <leader>svim :source $MYVIMRC<cr>
 noremap <leader>en :set spell! spelllang=en<cr>
 " Speak French
 noremap <leader>fr :set spell! spelllang=fr<cr>
+" Ctrl+space for functions autocompletion
+inoremap <c-space> <c-x><c-o>
+" F2 to display my cheat sheet
+noremap <f2> :help mts-cheat<cr>
+inoremap <f2> :help mts-cheat<cr>
+" Toggle invisible characters
+noremap <leader>pi :set list!<cr>
+inoremap <leader>pi :set list!<cr>
 
 """ Operator-pending mappings
 " between parentheses (try dp between parentheses)
@@ -140,8 +148,8 @@ set nolist
 set encoding=utf-8
 " fileformats to try in order of preference
 set fileformats="unix,dos,mac"
-" Pressing F2 will disable smart indentation, useful when using terminal pasting
-set pastetoggle=<F2>
+" Pressing F3 will disable smart indentation, useful when using terminal pasting
+set pastetoggle=<f3>
 " Always display about 4 lines before and after the current line
 set scrolloff=4
 " c-u and c-d makes a move of 5 lines
@@ -193,9 +201,9 @@ augroup filetypedetect
 	autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=grey40 ctermbg=lightgrey
 
   " Disable smart indentation with text files
-  autocmd BufNewFile,BufRead {*.tex,*.md,*.mdwn,*.markdown,*.txt} set noautoindent nosmartindent
+  autocmd BufNewFile,BufRead {*.tex,*.md,*.mdwn,*.markdown,*.txt} set noautoindent
 
-  " Respect PEP8 while editing python
+  "	Respect PEP8 while editing python
   autocmd FileType python  set tabstop=4 textwidth=79
 
   " When using make, we shouldn't expand tabs.
@@ -204,6 +212,23 @@ augroup filetypedetect
 	" for loop with i as index in Javascript,c,cpp
 	autocmd FileType javascript,c,cpp :iabbrev <buffer> fori for(i = 0; i < ; ++i)<left><left><left><left><left><left>
 
+	" Autocomplete for filetypes I deal with for current projects
+	" (I sometimes miss c/cpp)
+	autocmd FileType python set omnifunc=pythoncomplete#Complete
+	autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+	autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+	autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+	autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+	autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+	" Hide autocomplete tip window when I do something in insert mode (or
+	" I leave it)
+	autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
+	autocmd InsertLeave * if pumvisible() == 0|pclose|endif
+
+	" Don't fold by default
+	autocmd Syntax python,javascript,html,css,xml,php setlocal foldmethod=syntax
+	autocmd Syntax python,javascript,html,css,xml,php normal zR 
+	
 	""" PHP stuff
 	" abbreviations and typos
 	autocmd FileType php :iabbrev <buffer> fori for($i = 0; $i < ; ++$i)<left><left><left><left><left><left><left>
