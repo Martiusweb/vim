@@ -181,7 +181,6 @@ filetype plugin indent on
 augroup filetypedetect
   " Detect custom filetypes
   autocmd BufNewFile,BufRead *.rst set syntax=rest
-  autocmd BufNewFile,BufRead *.less set ft=css
   autocmd BufRead,BufNewFile *.sjs set ft=javascript
 
   " Display tabs & spaces at the begining of the line (indent-guides plugin)
