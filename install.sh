@@ -28,6 +28,7 @@ function test_prerequisites() {
 	echo "Testing prerequisites..."
 	test_cmd bundle
 	test_cmd rake
+	test_cmd ctags
 }
 
 function ask() {

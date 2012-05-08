@@ -62,12 +62,6 @@ noremap <down> <nop>
 noremap <left> <nop>
 noremap <right> <nop>
 
-""" Things to refactor
-" for loop with i as index in Javascript
-augroup javascript_file
-	autocmd FileType javascript :iabbrev <buffer> fori for(i = 0; i < ; ++i)<left><left><left><left><left><left>
-augroup END
-
 """ Most basic options
 " use the mouse
 set mouse=a
@@ -163,7 +157,9 @@ set formatoptions+=on1
 
 """ Identation (default behavior is still written to make it explicit)
 " Use tabs, not spaces, A tab is displayed as a 2 spaces
-set noexpandtab shiftwidth=2 tabstop=2
+set noexpandtab
+set shiftwidth=2
+set tabstop=2
 " Autoindentation
 set autoindent
 set smartindent
@@ -175,12 +171,18 @@ set wildmenu
 " Complete until longest common string, then list matching in a one-line menu
 set wildmode=longest:full
 
+" Syntastic
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_jump=1
+let g:syntastic_auto_loc_list=1
+
 """ Filetype specific configuration 
 filetype plugin indent on
 augroup filetypedetect
   " Detect custom filetypes
   autocmd BufNewFile,BufRead *.rst set syntax=rest
-  autocmd BufNewFile,BufRead *.less set syntax=css
+  autocmd BufNewFile,BufRead *.less set ft=css
+  autocmd BufRead,BufNewFile *.sjs set ft=javascript
 
   " Display tabs & spaces at the begining of the line (indent-guides plugin)
   autocmd FileType * IndentGuidesEnable
@@ -199,4 +201,16 @@ augroup filetypedetect
 
   " When using make, we shouldn't expand tabs.
   autocmd FileType make set noexpandtab
+
+	" for loop with i as index in Javascript,c,cpp
+	autocmd FileType javascript,c,cpp :iabbrev <buffer> fori for(i = 0; i < ; ++i)<left><left><left><left><left><left>
+
+	""" PHP stuff
+	" abbreviations and typos
+	autocmd FileType php :iabbrev <buffer> fori for($i = 0; $i < ; ++$i)<left><left><left><left><left><left><left>
+	autocmd FileType php :iabbrev <buffer> <?= <?php echo ; ?><left><left><left><left>
+
+	" highlight sql and html
+	let php_sql_query=1
+	let php_htmlInStrings=1
 augroup END
