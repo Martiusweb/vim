@@ -8,6 +8,7 @@
 set nocp
 " pathogen plugins loader
 call pathogen#infect()
+" See install.sh and submodules to know which plugins I use
 
 """ Customizables settings
 let mapleader = ","
@@ -19,6 +20,7 @@ iabbrev j@ martin@jolitv.com
 
 " Typos I do all the time
 iabbrev whiel while
+iabbrev tehn then
 
 """ Cool mappings (for an azerty layout)
 " move the current line down
@@ -48,6 +50,11 @@ noremap <leader>fr :set spell! spelllang=fr<cr>
 """ Operator-pending mappings
 " between parentheses (try dp between parentheses)
 onoremap p i(
+
+""" Commands
+" w!! forces sudo mode, useful when I forgot to sudo while configuring
+" something
+cmap w!! w !sudo tee % >/dev/null
 
 """ Ban bad habits 
 noremap <up> <nop>
@@ -84,14 +91,14 @@ set noerrorbells
 """ Look & feel
 " colors
 if &t_Co >= 256 || has("gui_running")
-	 " all the file types
-   colorscheme desertEx
-	 " html files get a special one, helps to make a difference
-	 autocmd filetype html,xml colorscheme anotherdark
+	" all the file types
+  colorscheme desertEx
+	" html files get a special one, helps to make a difference
+	autocmd filetype html,xml colorscheme anotherdark
 endif
 if &t_Co > 2 || has("gui_running")
-   " switch syntax highlighting on, when the terminal has colors
-   syntax on
+  " switch syntax highlighting on, when the terminal has colors
+  syntax on
 endif
 " Display cursor position
 set ruler
@@ -110,6 +117,7 @@ let g:Powerline_symbols = 'fancy'
 set guifont=Monaco\ for\ Powerline\ 10
 " Redraw when needed
 set lazyredraw
+
 
 """ Search
 " makes a search "very magic", ie special chars gets original regex meanings
@@ -154,7 +162,7 @@ set tildeop
 set formatoptions+=on1
 
 """ Identation (default behavior is still written to make it explicit)
-" Use tabs, not spaces, A tab is displayed as a 2 spaces, but count as 4
+" Use tabs, not spaces, A tab is displayed as a 2 spaces
 set noexpandtab shiftwidth=2 tabstop=2
 " Autoindentation
 set autoindent
@@ -169,3 +177,26 @@ set wildmode=longest:full
 
 """ Filetype specific configuration 
 filetype plugin indent on
+augroup filetypedetect
+  " Detect custom filetypes
+  autocmd BufNewFile,BufRead *.rst set syntax=rest
+  autocmd BufNewFile,BufRead *.less set syntax=css
+
+  " Display tabs & spaces at the begining of the line (indent-guides plugin)
+  autocmd FileType * IndentGuidesEnable
+  let g:indent_guides_guide_size = 2
+	" auto_colors does not work with my colorschemes...
+	" let g:indent_guides_auto_colors = 1
+	let g:indent_guides_auto_colors = 0
+	autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=grey30 ctermbg=darkgrey
+	autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=grey40 ctermbg=lightgrey
+
+  " Disable smart indentation with text files
+  autocmd BufNewFile,BufRead {*.tex,*.md,*.mdwn,*.markdown,*.txt} set noautoindent nosmartindent
+
+  " Respect PEP8 while editing python
+  autocmd FileType python  set tabstop=4 textwidth=79
+
+  " When using make, we shouldn't expand tabs.
+  autocmd FileType make set noexpandtab
+augroup END
