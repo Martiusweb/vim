@@ -20,6 +20,7 @@ Function mappings					*mts-function-mappings*
 <F1> Help
 <F2> Display this cheat sheet
 <F3> Toggle paste mode
+<F5> Toggle Gundo
 <F6> Display tagslist
 
 ------------------------------------------------------------------------------

@@ -51,6 +51,8 @@ inoremap <c-space> <c-x><c-o>
 " F2 to display my cheat sheet
 noremap <f2> :help mts-cheat<cr>
 inoremap <f2> :help mts-cheat<cr>
+" F5 display Gundo
+nnoremap <f5> :GundoToggle<cr>
 " Toggle invisible characters
 noremap <leader>pi :set list!<cr>
 inoremap <leader>pi :set list!<cr>
@@ -233,8 +235,14 @@ augroup filetypedetect
 	" abbreviations and typos
 	autocmd FileType php :iabbrev <buffer> fori for($i = 0; $i < ; ++$i)<left><left><left><left><left><left><left>
 	autocmd FileType php :iabbrev <buffer> <?= <?php echo ; ?><left><left><left><left>
-
 	" highlight sql and html
 	let php_sql_query=1
 	let php_htmlInStrings=1
+
+	""" Jekkyll
+	" Highlight YAML preambles in Jekyll posts
+	autocmd BufNewFile,BufRead */_posts/*.textile,*/_posts/*.mdwn syntax match Comment /\%^---\_.\{-}---$/
+	" Highlight code blocks in Jekyll posts
+	autocmd BufNewFile,BufRead */_posts/*.textile,*/_posts/*.mdwn syntax region Comment start=/^{% highlight .* %}$/ end=/{% endhighlight %}/
+
 augroup END
