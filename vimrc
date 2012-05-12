@@ -56,6 +56,8 @@ nnoremap <f5> :GundoToggle<cr>
 " Toggle invisible characters
 noremap <leader>pi :set list!<cr>
 inoremap <leader>pi :set list!<cr>
+" New tab 
+noremap gN :tabnew<cr>
 
 """ Operator-pending mappings
 " between parentheses (try dp between parentheses)
@@ -90,6 +92,7 @@ set history=1000
 set undolevels=1000
 " Silent!
 set visualbell
+autocmd GuiEnter * set t_vb=
 set noerrorbells
 
 """ Look & feel
@@ -170,6 +173,10 @@ set formatoptions+=on1
 set noexpandtab
 set shiftwidth=2
 set tabstop=2
+set softtabstop=0
+set copyindent
+set preserveindent
+" vim magic line :set noet ci pi sts=0 sw=2 ts=2
 " Autoindentation
 set autoindent
 set smartindent
@@ -234,7 +241,8 @@ augroup filetypedetect
 	""" PHP stuff
 	" abbreviations and typos
 	autocmd FileType php :iabbrev <buffer> fori for($i = 0; $i < ; ++$i)<left><left><left><left><left><left><left>
-	autocmd FileType php :iabbrev <buffer> <?= <?php echo ; ?><left><left><left><left>
+	autocmd FileType php :iabbrev <buffer> <?= <?php echo; ?><left><left><left><left>
+	"autocmd FileType php :iabbrev <buffer> <?__ <?php echo __(); ?><left><left><left><left><left>
 	" highlight sql and html
 	let php_sql_query=1
 	let php_htmlInStrings=1
