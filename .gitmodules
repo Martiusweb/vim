@@ -34,3 +34,9 @@
 [submodule "bundle/gundo"]
 	path = bundle/gundo
 	url = https://github.com/sjl/gundo.vim.git
+[submodule "bundle/jscomplete-vim"]
+	path = bundle/jscomplete-vim
+	url = https://github.com/teramako/jscomplete-vim
+[submodule "bundle/jshint-vim"]
+	path = bundle/jshint-vim
+	url = https://github.com/walm/jshint.vim.git

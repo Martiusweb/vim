@@ -21,6 +21,7 @@ iabbrev j@ martin@jolitv.com
 " Typos I do all the time
 iabbrev whiel while
 iabbrev tehn then
+iabbrev functino function
 
 """ Cool mappings (for an azerty layout)
 " move the current line down
@@ -58,6 +59,12 @@ noremap <leader>pi :set list!<cr>
 inoremap <leader>pi :set list!<cr>
 " New tab 
 noremap gN :tabnew<cr>
+" Newtab + Command+t
+noremap <leader>gN :tabnew<cr>:CommandT<cr>
+" Command+t
+noremap <leader>t :CommandT<cr>
+" JsHint
+nnoremap <leader>js :JSHint %:t<cr>
 
 """ Operator-pending mappings
 " between parentheses (try dp between parentheses)
@@ -101,7 +108,7 @@ if &t_Co >= 256 || has("gui_running")
 	" all the file types
   colorscheme desertEx
 	" html files get a special one, helps to make a difference
-	autocmd filetype html,xml colorscheme anotherdark
+	" autocmd filetype <buffer> html,xml colorscheme anotherdark
 endif
 if &t_Co > 2 || has("gui_running")
   " switch syntax highlighting on, when the terminal has colors
@@ -224,11 +231,12 @@ augroup filetypedetect
 	" Autocomplete for filetypes I deal with for current projects
 	" (I sometimes miss c/cpp)
 	autocmd FileType python set omnifunc=pythoncomplete#Complete
-	autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 	autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 	autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 	autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 	autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+	autocmd FileType javascript setlocal omnifunc=jscomplete#CompleteJS
+
 	" Hide autocomplete tip window when I do something in insert mode (or
 	" I leave it)
 	autocmd CursorMovedI * if pumvisible() == 0|pclose|endif
@@ -254,3 +262,6 @@ augroup filetypedetect
 	autocmd BufNewFile,BufRead */_posts/*.textile,*/_posts/*.mdwn syntax region Comment start=/^{% highlight .* %}$/ end=/{% endhighlight %}/
 
 augroup END
+
+" Jscomplete options: support dom and moz completion
+let g:jscomplete_use = ['dom', 'moz']

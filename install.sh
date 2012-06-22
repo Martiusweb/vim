@@ -95,6 +95,7 @@ echo
 echo -n "installing font... "
 if [ ! -f .fonts/Monaco_Linux-Powerline.otf ]
 then
+	mkdir -p ~/.fonts
 	cp -f assets/Monaco_Linux-Powerline.otf ~/.fonts
 fi
 echo "ok"
