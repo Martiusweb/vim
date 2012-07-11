@@ -176,17 +176,22 @@ set tildeop
 set formatoptions+=on1
 
 """ Identation (default behavior is still written to make it explicit)
-" Use tabs, not spaces, A tab is displayed as a 2 spaces
-set noexpandtab
-set shiftwidth=2
-set tabstop=2
-set softtabstop=0
+" Use tabs, not spaces, A tab is displayed as a 4 spaces
+set expandtab
+set shiftwidth=4
+set tabstop=4
+set softtabstop=4
 set copyindent
 set preserveindent
-" vim magic line :set noet ci pi sts=0 sw=2 ts=2
+" vim magic line :set et ci pi sts=4 sw=4 ts=4
 " Autoindentation
 set autoindent
 set smartindent
+
+
+""" Textwidth
+set textwidth=79
+set colorcolumn=80,120
 
 """ File pattern matching
 set wildignore=*.swp,*.back
