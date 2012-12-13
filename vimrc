@@ -101,6 +101,8 @@ set undolevels=1000
 set visualbell
 autocmd GuiEnter * set t_vb=
 set noerrorbells
+" Remove trailing whitespaces
+autocmd BufWritePre * :%s/\s\+$//e
 
 """ Look & feel
 " colors
