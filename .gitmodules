@@ -49,3 +49,9 @@
 [submodule "bundle/closetag-vim"]
 	path = bundle/closetag-vim
 	url = git://github.com/vim-scripts/closetag.vim.git
+[submodule "bundle/phpcomplete"]
+	path = bundle/phpcomplete
+	url = git://github.com/vim-scripts/phpcomplete.vim.git
+[submodule "bundle/vim-gitgutter"]
+	path = bundle/vim-gitgutter
+	url = git://github.com/airblade/vim-gitgutter.git
