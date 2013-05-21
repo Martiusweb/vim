@@ -34,13 +34,17 @@ noremap H ^
 noremap L $
 " deletes current line in insert mode
 inoremap <c-d> <esc>ddi
+" When pressing kj in insert mode, I probably wanted to escape
+inoremap kj <esc>
+" U is "redo"
+noremap U <c-r>
 " (all modes) uppercase current word
 noremap <c-u> viwUe
 inoremap <c-u> <esc>viwUea
 " disable highlight
 nnoremap <silent> <leader>/ :nohlsearch<cr>
 " open my vimrc in a new tab
-nnoremap <leader>evim :tabnew $MYVIMRC<cr> 
+nnoremap <leader>evim :tabnew $MYVIMRC<cr>
 " source my vimrc (reload the tab)
 nnoremap <leader>svim :source $MYVIMRC<cr>
 " Speak English (spellcheck)
@@ -57,7 +61,7 @@ nnoremap <f5> :GundoToggle<cr>
 " Toggle invisible characters
 noremap <leader>pi :set list!<cr>
 inoremap <leader>pi :set list!<cr>
-" New tab 
+" New tab
 noremap gN :tabnew<cr>
 " Newtab + Command+t
 noremap <leader>gN :tabnew<cr>:CommandT<cr>
@@ -75,7 +79,7 @@ onoremap p i(
 " something
 cmap w!! w !sudo tee % >/dev/null
 
-""" Ban bad habits 
+""" Ban bad habits
 noremap <up> <nop>
 noremap <down> <nop>
 noremap <left> <nop>
@@ -127,6 +131,7 @@ set title
 set ttyfast
 " Always display status line
 set laststatus=2
+" Customize status line
 " Fancy powerline symbols
 let g:Powerline_symbols = 'fancy'
 " Font I use
@@ -207,7 +212,7 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=1
 let g:syntastic_auto_loc_list=1
 
-""" Filetype specific configuration 
+""" Filetype specific configuration
 filetype plugin indent on
 augroup filetypedetect
   " Detect custom filetypes
@@ -251,8 +256,8 @@ augroup filetypedetect
 
 	" Don't fold by default
 	autocmd Syntax python,javascript,html,css,xml,php setlocal foldmethod=syntax
-	autocmd Syntax python,javascript,html,css,xml,php normal zR 
-	
+	autocmd Syntax python,javascript,html,css,xml,php normal zR
+
 	""" PHP stuff
 	" abbreviations and typos
 	autocmd FileType php :iabbrev <buffer> fori for($i = 0; $i < ; ++$i)<left><left><left><left><left><left><left>

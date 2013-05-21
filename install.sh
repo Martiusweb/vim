@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 cd $DIR
@@ -7,7 +7,7 @@ function get_if_needed() {
 	if [ ! -f $1 ]
 	then
 		echo Getting $1 from $2
-		curl $2 > $1 
+		curl $2 > $1
 	else
 		echo $1 already available
 	fi
