@@ -29,6 +29,7 @@ function test_prerequisites() {
 	test_cmd bundle
 	test_cmd rake
 	test_cmd ctags
+	test_cmd cmake
 }
 
 function ask() {
@@ -74,10 +75,9 @@ echo
 echo -n "Fetching submodules... "
 if [ -d bundle/vim-powerline ]
 then
-	git submodule init > /dev/null 2>&1
-	git submodule update > /dev/null 2>&1
+	git submodule update --init --recursive > /dev/null 2>&1
 else
-	git submodule update > /dev/null 2>&1
+	git submodule update --recursive > /dev/null 2>&1
 fi
 echo "ok"
 echo
@@ -87,6 +87,14 @@ echo "Installing command-T..."
 cd bundle/Command-T
 bundle install
 rake make
+cd $DIR
+echo "ok"
+echo
+
+# YouCompleteMe...
+echo -n "installing YouCompleteMe..."
+cd bundle/YouCompleteMe
+./install.sh
 cd $DIR
 echo "ok"
 echo
