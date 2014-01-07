@@ -218,6 +218,7 @@ augroup filetypedetect
   " Detect custom filetypes
   autocmd BufNewFile,BufRead *.rst set syntax=rest
   autocmd BufRead,BufNewFile *.sjs set ft=javascript
+  autocmd BufRead,BufNewFile *.ini.dist set ft=dosini
 
   " Display tabs & spaces at the begining of the line (indent-guides plugin)
   autocmd FileType * IndentGuidesEnable
@@ -277,3 +278,6 @@ augroup END
 
 " Jscomplete options: support dom and moz completion
 let g:jscomplete_use = ['dom', 'moz']
+
+" Pymode (coma separated list of rules to ignore)
+let g:pymode_lint_ignore = "E501"
