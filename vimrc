@@ -257,7 +257,7 @@ augroup filetypedetect
 
 	" Don't fold by default
 	autocmd Syntax python,javascript,html,css,xml,php setlocal foldmethod=syntax
-	autocmd Syntax python,javascript,html,css,xml,php normal zR
+	set nofoldenable
 
 	""" PHP stuff
 	" abbreviations and typos
@@ -280,4 +280,4 @@ augroup END
 let g:jscomplete_use = ['dom', 'moz']
 
 " Pymode (coma separated list of rules to ignore)
-let g:pymode_lint_ignore = "E501"
+let g:pymode_lint_ignore = "E501,C901"
