@@ -82,19 +82,21 @@ fi
 echo "ok"
 echo
 
-# command-T
-echo "Installing command-T..."
-cd bundle/Command-T
-bundle install
-rake make
-cd $DIR
-echo "ok"
-echo
+# Powerline
+if [ `which yaourt` ]
+then
+    echo -n "installing Powerline... "
+    yaourt -S python-powerline-git --no-confirm
+else
+    echo -n "Powerline is only auto-installable for archlinux via yaourt!"
+    echo -n "For a manual installation please see:"
+    echo -n "https://powerline.readthedocs.org/en/latest/installation/linux.html#installation-linux"
+fi
 
 # YouCompleteMe...
 echo -n "installing YouCompleteMe..."
 cd bundle/YouCompleteMe
-./install.sh
+./install.sh --clang-completer
 cd $DIR
 echo "ok"
 echo

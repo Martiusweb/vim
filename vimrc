@@ -64,9 +64,9 @@ inoremap <leader>pi :set list!<cr>
 " New tab
 noremap gN :tabnew<cr>
 " Newtab + Command+t
-noremap <leader>gN :tabnew<cr>:CommandT<cr>
+noremap g? :tabnew<cr>:CtrlP<cr>
 " Command+t
-noremap <leader>t :CommandT<cr>
+noremap <leader>t :CtrlP<cr>
 " JsHint
 nnoremap <leader>js :JSHint %:t<cr>
 
@@ -111,15 +111,16 @@ autocmd BufWritePre * :%s/\s\+$//e
 """ Look & feel
 " colors
 if &t_Co >= 256 || has("gui_running")
-	" all the file types
-  colorscheme desertEx
-	" html files get a special one, helps to make a difference
-	" autocmd filetype <buffer> html,xml colorscheme anotherdark
+    " all the file types
+    colorscheme desertEx
+    " html files get a special one, helps to make a difference
+    " autocmd filetype <buffer> html,xml colorscheme anotherdark
 endif
 if &t_Co > 2 || has("gui_running")
-  " switch syntax highlighting on, when the terminal has colors
-  syntax on
+    " switch syntax highlighting on, when the terminal has colors
+    syntax on
 endif
+
 " Display cursor position
 set ruler
 " As in terminal in gui mode (disable all, except the icon in kde, copy visual
@@ -215,28 +216,28 @@ let g:syntastic_auto_loc_list=1
 """ Filetype specific configuration
 filetype plugin indent on
 augroup filetypedetect
-  " Detect custom filetypes
-  autocmd BufNewFile,BufRead *.rst set syntax=rest
-  autocmd BufRead,BufNewFile *.sjs set ft=javascript
-  autocmd BufRead,BufNewFile *.ini.dist set ft=dosini
+    " Detect custom filetypes
+    autocmd BufNewFile,BufRead *.rst set syntax=rest
+    autocmd BufRead,BufNewFile *.sjs set ft=javascript
+    autocmd BufRead,BufNewFile *.ini.dist set ft=dosini
 
-  " Display tabs & spaces at the begining of the line (indent-guides plugin)
-  autocmd FileType * IndentGuidesEnable
-  let g:indent_guides_guide_size = 2
+    " Indent-guide configuration
+    autocmd FileType * :IndentGuidesEnable
+    let g:indent_guides_guide_size = 4
 	" auto_colors does not work with my colorschemes...
 	" let g:indent_guides_auto_colors = 1
 	let g:indent_guides_auto_colors = 0
 	autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=grey30 ctermbg=darkgrey
 	autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=grey40 ctermbg=lightgrey
 
-  " Disable smart indentation with text files
-  autocmd BufNewFile,BufRead {*.tex,*.md,*.mdwn,*.markdown,*.txt} set noautoindent
+    " Disable smart indentation with text files
+    autocmd BufNewFile,BufRead {*.tex,*.md,*.mdwn,*.markdown,*.txt} set noautoindent
 
-  "	Respect PEP8 while editing python
-  autocmd FileType python  set tabstop=4 textwidth=79
+    " Respect PEP8 while editing python
+    autocmd FileType python  set tabstop=4 textwidth=79
 
-  " When using make, we shouldn't expand tabs.
-  autocmd FileType make set noexpandtab
+    " When using make, we shouldn't expand tabs.
+    autocmd FileType make set noexpandtab
 
 	" for loop with i as index in Javascript,c,cpp
 	autocmd FileType javascript,c,cpp :iabbrev <buffer> fori for(i = 0; i < ; ++i)<left><left><left><left><left><left>
@@ -248,7 +249,6 @@ augroup filetypedetect
 	autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 	autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 	autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-	autocmd FileType javascript setlocal omnifunc=jscomplete#CompleteJS
 
 	" Hide autocomplete tip window when I do something in insert mode (or
 	" I leave it)
@@ -276,8 +276,7 @@ augroup filetypedetect
 
 augroup END
 
-" Jscomplete options: support dom and moz completion
-let g:jscomplete_use = ['dom', 'moz']
-
 " Pymode (coma separated list of rules to ignore)
 let g:pymode_lint_ignore = "E501,C901"
+
+let $PYTHONPATH="/usr/lib/python3.3/site-packages"
