@@ -210,7 +210,7 @@ set wildmode=longest:full
 
 " Syntastic
 let g:syntastic_enable_signs=1
-let g:syntastic_auto_jump=1
+let g:syntastic_auto_jump=0
 let g:syntastic_auto_loc_list=1
 
 """ Filetype specific configuration
@@ -280,3 +280,4 @@ augroup END
 let g:pymode_lint_ignore = "E501,C901"
 
 let $PYTHONPATH="/usr/lib/python3.3/site-packages"
+let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
