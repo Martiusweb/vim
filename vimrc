@@ -64,7 +64,7 @@ inoremap <leader>pi :set list!<cr>
 " New tab
 noremap gN :tabnew<cr>
 " Newtab + Command+t
-noremap g? :tabnew<cr>:CtrlP<cr>
+noremap <leader>? :tabnew<cr>:CtrlP<cr>
 " Command+t
 noremap <leader>t :CtrlP<cr>
 " JsHint
