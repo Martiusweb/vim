@@ -26,6 +26,7 @@ function test_cmd() {
 
 function test_prerequisites() {
 	echo "Testing prerequisites..."
+	test_cmd curl
 	test_cmd bundle
 	test_cmd rake
 	test_cmd ctags
@@ -88,9 +89,9 @@ then
     echo -n "installing Powerline... "
     yaourt -S python-powerline-git --no-confirm
 else
-    echo -n "Powerline is only auto-installable for archlinux via yaourt!"
-    echo -n "For a manual installation please see:"
-    echo -n "https://powerline.readthedocs.org/en/latest/installation/linux.html#installation-linux"
+    echo "Powerline is only auto-installable for archlinux via yaourt!"
+    echo "For a manual installation please see:"
+    echo "https://powerline.readthedocs.org/en/latest/installation/linux.html#installation-linux"
 fi
 
 # YouCompleteMe...

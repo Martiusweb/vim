@@ -279,5 +279,5 @@ augroup END
 " Pymode (coma separated list of rules to ignore)
 let g:pymode_lint_ignore = "E501,C901"
 
-let $PYTHONPATH="/usr/lib/python3.3/site-packages"
+let $PYTHONPATH="/usr/lib/python3.4/site-packages"
 let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
