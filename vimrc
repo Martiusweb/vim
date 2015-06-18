@@ -117,6 +117,9 @@ if &t_Co >= 256 || has("gui_running")
     colorscheme desertEx
     " html files get a special one, helps to make a difference
     " autocmd filetype <buffer> html,xml colorscheme anotherdark
+else
+    " yes it's the same theme, but this one works via screen, etc
+    colorscheme desertEx
 endif
 if &t_Co > 2 || has("gui_running")
     " switch syntax highlighting on, when the terminal has colors
