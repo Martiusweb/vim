@@ -22,6 +22,7 @@ iabbrev j@ martin@jolitv.com
 iabbrev whiel while
 iabbrev tehn then
 iabbrev functino function
+iabbrev selF self
 
 """ Cool mappings (for an azerty layout)
 " move the current line down
@@ -55,7 +56,8 @@ noremap <leader>fr :set spell! spelllang=fr<cr>
 inoremap <c-space> <c-x><c-o>
 " F2 to display my cheat sheet
 noremap <f2> :help mts-cheat<cr>
-inoremap <f2> :help mts-cheat<cr>
+" F4 to run Syntastic
+nnoremap <f4> :SyntasticCheck<cr>
 " F5 display Gundo
 nnoremap <f5> :GundoToggle<cr>
 " Toggle invisible characters
@@ -245,7 +247,7 @@ augroup filetypedetect
 	" Autocomplete for filetypes I deal with for current projects
 	" (I sometimes miss c/cpp)
 	autocmd FileType python set omnifunc=pythoncomplete#Complete
-	autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+	autocmd FileType html set omnifunc=htmlcomplete#CompleteTags textwidth=0
 	autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 	autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 	autocmd FileType php set omnifunc=phpcomplete#CompletePHP
@@ -276,8 +278,21 @@ augroup filetypedetect
 
 augroup END
 
-" Pymode (coma separated list of rules to ignore)
+" Currently, syntastic is better at linting than pymode
+let g:pymode_lint = 0
 let g:pymode_lint_ignore = "E501,C901"
+let g:syntastic_python_flake8_args='--ignore=E501,C901'
 
+" Use jedi-vim instead of rope
+let g:pymode_rope = 0
+let g:jedi#popup_on_dot = 0
+let g:jedi#popup_select_first = 0
+
+" Pythonpath is required for powerline (installed as a site package, currently)
 let $PYTHONPATH="/usr/lib/python3.4/site-packages"
+
+" while ycm uses python2
 let g:ycm_path_to_python_interpreter = '/usr/bin/python2'
+
+" Git gutter don't shows if the line is way too long
+let g:gitgutter_max_signs = 1000
