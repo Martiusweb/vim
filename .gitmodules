@@ -16,9 +16,6 @@
 [submodule "bundle/nerdcommenter"]
 	path = bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
-[submodule "bundle/taglist"]
-	path = bundle/taglist
-	url = https://github.com/vim-scripts/taglist.vim
 [submodule "bundle/vim-less"]
 	path = bundle/vim-less
 	url = https://github.com/groenewege/vim-less.git
@@ -40,9 +37,6 @@
 [submodule "bundle/closetag-vim"]
 	path = bundle/closetag-vim
 	url = https://github.com/vim-scripts/closetag.vim.git
-[submodule "bundle/phpcomplete"]
-	path = bundle/phpcomplete
-	url = https://github.com/vim-scripts/phpcomplete.vim.git
 [submodule "bundle/vim-gitgutter"]
 	path = bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git

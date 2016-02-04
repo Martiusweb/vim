@@ -16,13 +16,15 @@ let maplocalleader = "!"
 
 " Things I write all the time
 iabbrev m@ martius@martiusweb.net
-iabbrev j@ martin@jolitv.com
 
 " Typos I do all the time
 iabbrev whiel while
 iabbrev tehn then
 iabbrev functino function
 iabbrev selF self
+iabbrev improt import
+iabbrev yieldf yield from
+iabbrev yielf yield from
 
 """ Cool mappings (for an azerty layout)
 " move the current line down
@@ -60,6 +62,8 @@ noremap <f2> :help mts-cheat<cr>
 nnoremap <f4> :SyntasticCheck<cr>
 " F5 display Gundo
 nnoremap <f5> :GundoToggle<cr>
+" F6 display tags
+nmap <f6> :TagbarToggle<CR>
 " Toggle invisible characters
 noremap <leader>pi :set list!<cr>
 inoremap <leader>pi :set list!<cr>
@@ -141,7 +145,8 @@ set laststatus=2
 " Fancy powerline symbols
 let g:Powerline_symbols = 'fancy'
 " Font I use
-set guifont=Monaco\ for\ Powerline\ 10
+" set guifont=Monaco\ for\ Powerline\ 10
+set guifont=Hack\ 10
 " Redraw when needed
 set lazyredraw
 
