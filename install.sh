@@ -67,8 +67,8 @@ mkdir -p autoload bundle colors
 
 echo "Getting dependencies..."
 get_if_needed autoload/pathogen.vim  'www.vim.org/scripts/download_script.php?src_id=16224'
-get_if_needed colors/desertEx.vim    'http://vimcolorschemetest.googlecode.com/svn/colors/desertEx.vim'
-get_if_needed colors/anotherdark.vim 'http://vimcolorschemetest.googlecode.com/svn/colors/anotherdark.vim'
+get_if_needed colors/desertEx.vim    'https://raw.githubusercontent.com/vim-scripts/desertEx/master/colors/desertEx.vim'
+get_if_needed colors/anotherdark.vim 'https://raw.githubusercontent.com/rodnaph/vim-color-schemes/master/colors/anotherdark.vim'
 echo "That's all I need"
 echo
 
@@ -87,7 +87,7 @@ echo
 if [ `which yaourt` ]
 then
     echo -n "installing Powerline... "
-    yaourt -S python-powerline-git --no-confirm
+    yaourt -S python-powerline-git
 else
     echo "Powerline is only auto-installable for archlinux via yaourt!"
     echo "For a manual installation please see:"

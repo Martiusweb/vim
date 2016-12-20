@@ -144,6 +144,8 @@ set laststatus=2
 " Customize status line
 " Fancy powerline symbols
 let g:Powerline_symbols = 'fancy'
+" powerline uses python3
+let g:powerline_pycmd = 'py3'
 " Font I use
 " set guifont=Monaco\ for\ Powerline\ 10
 set guifont=Hack\ 10
